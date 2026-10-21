@@ -54,16 +54,10 @@ Para lograr lo anterior, el enunciado propone el siguiente diagrama de alto nive
 \label{fig}
 \end{figure}
 Para cumplir con lo anterior, se diseñaron los bloques \textit{Command Decoder}, \textit{Processing Core} y \textit{Display logic}.
-\section{Prepare Your Paper Before Styling}
-Before you begin to format your paper, first write and save the content as a 
-separate text file. Complete all content and organizational editing before 
-formatting. Please note sections to \ref{FAT} below for more information on 
-proofreading, spelling and grammar.
 
-Keep your text and graphic files separate until after the text has been 
-formatted and styled. Do not number text heads---{\LaTeX} will do that 
-for you.
-
+\subsection{Command Decoder}
+El módulo \textit{Command Decoder} monitorea los bytes recibidos desde la UART a través de \texttt{rx\_data} cuando se activa el pulso \texttt{rx\_ready}. Mediante la señal interna \texttt{cmd\_valid}, verifica si el byte recibido corresponde a un comando de lectura u operación (valores del $2$ al $8$) mientras las memorias no están siendo escritas (\texttt{rx\_busy = 1'b0}). Si el comando corresponde a una cabecera de escritura en memoria ($0$ o $1$) o si \textit{RX\_Logic} se encuentra cargando un vector (\texttt{rx\_busy = 1'b1}), entonces \texttt{cmd\_valid = 1'b0} para evitar que los datos del vector sean interpretados como instrucciones.
+Cuando \texttt{cmd\_valid = 1'b1}, el módulo registra el código de la instrucción en \texttt{op\_mode[2:0]} y genera un pulso de un ciclo de reloj en la señal \texttt{start\_op} para indicar al \textit{Processing Core} que inicie el procesamiento. Adicionalmente, si el comando corresponde a una operación de reducción escalar, activa la bandera respectiva (\texttt{is\_man\_dist}, \texttt{is\_euc\_dist} o \texttt{is\_dot\_prod}). Estas banderas permiten habilitar el acumulador en el \textit{Processing Core}, seleccionar la cantidad de bytes a enviar en \textit{TX\_logic} ($2$, $3$ o $4$ bytes) y encender los displays de 7 segmentos en \textit{Display\_logic}.
 \subsection{Abbreviations and Acronyms}\label{Anexo_1}
 Define abbreviations and acronyms the first time they are used in the text, 
 even after they have been defined in the abstract. Abbreviations such as 
