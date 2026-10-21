@@ -1,0 +1,88 @@
+# =============================================================================
+# Xilinx / AMD Vivado
+# =============================================================================
+# Directorios generados automáticamente por Vivado (se regeneran al abrir/compilar)
+.Xil/
+*.cache/
+*.gen/
+*.hw/
+*.ip_user_files/
+*.runs/
+*.sim/
+*.hbs/
+*.lp/
+*.os/
+*.str/
+*.tmp/
+*.srcs/utils_1/
+
+# Archivos de registro, respaldos y temporales de Vivado / XSim
+*.jou
+*.log
+*.pb
+*.str
+*.dmp
+*.wdb
+*.vcd
+*.veo
+*.vho
+*.dcp
+*.bit
+*.bin
+*.ltx
+*.mmi
+*.prm
+*.mcs
+*.rpt
+*.rpx
+*.vdi
+*.vds
+*.wdf
+*.wpc
+*.backup.*
+!*/*.xci
+!*/*.xdc
+
+# Directorio de trabajo de XSim
+xsim.dir/
+webtalk*
+
+# =============================================================================
+# LaTeX (Carpeta del informe IEEE)
+# =============================================================================
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.lot
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex
+*.synctex(busy)
+*.synctex.gz
+*.synctex.gz(busy)
+*.toc
+*.vrb
+*.xdv
+
+# =============================================================================
+# MATLAB / Python / Sistema Operativo / IDEs
+# =============================================================================
+# MATLAB
+*.asv
+*.mex*
+slprj/
+
+# Sistema Operativo y Editores
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*~
+.vscode/
+.idea/
