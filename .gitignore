@@ -1,88 +1,37 @@
 # =============================================================================
-# Xilinx / AMD Vivado
+# Ignorar todo por defecto (Lista Blanca / Whitelist)
 # =============================================================================
-# Directorios generados automáticamente por Vivado (se regeneran al abrir/compilar)
-.Xil/
-*.cache/
-*.gen/
-*.hw/
-*.ip_user_files/
-*.runs/
-*.sim/
-*.hbs/
-*.lp/
-*.os/
-*.str/
-*.tmp/
-*.srcs/utils_1/
+*
 
-# Archivos de registro, respaldos y temporales de Vivado / XSim
-*.jou
-*.log
-*.pb
-*.str
-*.dmp
-*.wdb
-*.vcd
-*.veo
-*.vho
-*.dcp
-*.bit
-*.bin
-*.ltx
-*.mmi
-*.prm
-*.mcs
-*.rpt
-*.rpx
-*.vdi
-*.vds
-*.wdf
-*.wpc
-*.backup.*
-!*/*.xci
-!*/*.xdc
-
-# Directorio de trabajo de XSim
-xsim.dir/
-webtalk*
+# Mantener este archivo .gitignore
+!.gitignore
 
 # =============================================================================
-# LaTeX (Carpeta del informe IEEE)
+# 1. Archivos de diseño en Vivado (HDL, Constraints e IPs)
 # =============================================================================
-*.aux
-*.bbl
-*.bcf
-*.blg
-*.fdb_latexmk
-*.fls
-*.lof
-*.lot
-*.nav
-*.out
-*.run.xml
-*.snm
-*.synctex
-*.synctex(busy)
-*.synctex.gz
-*.synctex.gz(busy)
-*.toc
-*.vrb
-*.xdv
+!IP_workshop_2.srcs/
+
+# Constraints (.xdc)
+!IP_workshop_2.srcs/constrs_1/
+!IP_workshop_2.srcs/constrs_1/**/
+!IP_workshop_2.srcs/constrs_1/**/*.xdc
+
+# Fuentes HDL (.v, .sv, .vhd)
+!IP_workshop_2.srcs/sources_1/
+!IP_workshop_2.srcs/sources_1/imports/
+!IP_workshop_2.srcs/sources_1/imports/**/
+!IP_workshop_2.srcs/sources_1/imports/**/*.v
+!IP_workshop_2.srcs/sources_1/imports/**/*.sv
+!IP_workshop_2.srcs/sources_1/imports/**/*.vhd
+
+# Bloques de configuración de IP (.xci) en sus carpetas correspondientes
+!IP_workshop_2.srcs/sources_1/ip/
+!IP_workshop_2.srcs/sources_1/ip/*/
+!IP_workshop_2.srcs/sources_1/ip/*/*.xci
 
 # =============================================================================
-# MATLAB / Python / Sistema Operativo / IDEs
+# 2. Archivo de MATLAB con las funciones
 # =============================================================================
-# MATLAB
-*.asv
-*.mex*
-slprj/
-
-# Sistema Operativo y Editores
-.DS_Store
-Thumbs.db
-Desktop.ini
-*.swp
-*~
-.vscode/
-.idea/
+!IEEE-conference-template-062824/
+!IEEE-conference-template-062824/*.m
+!*.m

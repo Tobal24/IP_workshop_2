@@ -79,12 +79,12 @@ function write2dev(vector, bloque, puertoCOM)
 end
 
 
-function resultado = command2dev(comando, args)
+function resultado = command2dev(comando, varargin)
 
     switch string(comando)
         case "readVec"
-            bloque    = args{1};
-            puertoCOM = args{2};
+            bloque    = varargin{1};
+            puertoCOM = varargin{2};
             bloque = upper(string(bloque));
             if bloque == "A" || bloque == "BRAMA"
                 cmd = uint8(2);
@@ -103,7 +103,7 @@ function resultado = command2dev(comando, args)
             vector = byte_lsb + bitshift(byte_msb, 8);
             resultado = vector(:);
         case {"SumVec", "sumVec"}
-            puertoCOM = args{1};
+            puertoCOM = varargin{1};
             cmd = uint8(4);
             s = serialport(puertoCOM, 115200, "Timeout", 5);
             flush(s);
@@ -115,7 +115,7 @@ function resultado = command2dev(comando, args)
             vector = byte_lsb + bitshift(byte_msb, 8);
             resultado = vector(:);
         case {"AvgVec", "avgVec"}
-            puertoCOM = args{1};
+            puertoCOM = varargin{1};
             cmd = uint8(5);
             s = serialport(puertoCOM, 115200, "Timeout", 5);
             flush(s);
@@ -127,7 +127,7 @@ function resultado = command2dev(comando, args)
             vector = byte_lsb + bitshift(byte_msb, 8);
             resultado = vector(:);
         case {"manDist", "ManDist"}
-            puertoCOM = args{1};
+            puertoCOM = varargin{1};
             cmd = uint8(6);
             s = serialport(puertoCOM, 115200, "Timeout", 5);
             flush(s);
@@ -136,7 +136,7 @@ function resultado = command2dev(comando, args)
             clear s;
             resultado = double(bytes_raw(1)) + bitshift(double(bytes_raw(2)), 8) + bitshift(double(bytes_raw(3)), 16);
         case{"eucDist", "EucDist"}
-            puertoCOM = args{1};
+            puertoCOM = varargin{1};
             cmd = uint8(7);
             s = serialport(puertoCOM, 115200, "Timeout", 5);
             flush(s);
@@ -145,7 +145,7 @@ function resultado = command2dev(comando, args)
             clear s;
             resultado = double(bytes_raw(1)) + bitshift(double(bytes_raw(2)), 8) + bitshift(double(bytes_raw(3)), 16);
         case{"dotProd", "DotProd"}
-            puertoCOM = args{1};
+            puertoCOM = varargin{1};
             cmd = uint8(8);
             s = serialport(puertoCOM, 115200, "Timeout", 5);
             flush(s);
