@@ -98,14 +98,21 @@ module Processing_Core#(
     logic [31:0] data_reg;
 
     // IP CORDIC para raíz cuadrada (EucDist)
-    cordic_0 cordic_inst (
-        .aclk                    (clk),
-        .s_axis_cartesian_tvalid (cordic_valid),
-        .s_axis_cartesian_tdata  (data_reg),
-        .m_axis_dout_tvalid      (cordic_ready),
-        .m_axis_dout_tdata       (cordic_dout)
+    //cordic_0 cordic_inst (
+    //    .aclk                    (clk),
+    //    .s_axis_cartesian_tvalid (cordic_valid),
+    //    .s_axis_cartesian_tdata  (data_reg),
+    //    .m_axis_dout_tvalid      (cordic_ready),
+    //    .m_axis_dout_tdata       (cordic_dout)
+    //);
+       sqrt raiz (
+        .clk          (clk),
+        .rst          (rst),
+        .cordic_valid (cordic_valid),
+        .data_reg     (data_reg),
+        .cordic_ready (cordic_ready),
+        .cordic_dout  (cordic_dout)
     );
-
     // Contador de direcciones de lectura (Puerto B de las BRAM)
     always_ff @(posedge clk) begin
         if (rst || addr_rst) begin
